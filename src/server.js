@@ -35,7 +35,7 @@ export default Glue.compose({
   server.auth.strategy('jwt', 'jwt', {
     key: config.auth.secret,
     validateFunc: validateJwt,
-    verifyOptions: { algorithms: [config.auth.algorithm] },
+    verifyOptions: { algorithms: config.auth.algorithms },
   });
 
   // Uncomment to require authentication by default in all routes

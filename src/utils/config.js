@@ -37,7 +37,7 @@ module.exports = Object.freeze({
     secret: env.SECRET || 'really_secret_key',
     saltRounds: 10,
     options: {
-      algorithm: 'HS256',
+      algorithms: ['HS256'],
       expiresIn: '24h',
     },
   },

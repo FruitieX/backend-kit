@@ -77,8 +77,10 @@ export const doAuthWithScope = scope => ({
 });
 
 // Create a new JWT for user with `email` and `scope`
-export const createToken = (email, scope) => ({
-  token: jwt.sign({ email, scope }, config.auth.secret, config.auth.options),
+export const createToken = (id, email, scope) => ({
+  token: jwt.sign({ id, email, scope }, config.auth.secret, {
+    algorithm: config.auth.options.algorithms[0]
+  }),
 });
 
 // Return promise which resolves to hash of given password

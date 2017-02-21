@@ -27,4 +27,6 @@ export const updateUser = async (request, reply) => {
   return dbUpdateUser(request.params.userId, fields).then(reply);
 };
 
-export const authUser = (request, reply) => reply(createToken(request.pre.user.email, 'user'));
+export const authUser = (request, reply) => (
+  reply(createToken(request.pre.user.id, request.pre.user.email, 'user'))
+);
