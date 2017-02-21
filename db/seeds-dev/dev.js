@@ -4,11 +4,17 @@ const fixtureFactory = require('fixture-factory');
 const dummyPassword = '$2a$10$jqtfUwulMw6xqGUA.IsjkuAooNkAjPT3FJ9rRiUoSTsUpNTD8McxC';
 
 fixtureFactory.register('user', {
-  email: 'foo@bar.com',
+  email: 'internet.email',
   password: dummyPassword,
+  description: 'lorem.sentences',
 });
 
-exports.seed = knex => (
-  knex
-    .batchInsert('users', fixtureFactory.generate('user', 1))
-);
+const testUser = Object.assign({}, fixtureFactory.generateOne('user'), { email: 'foo@bar.com' });
+
+exports.seed = knex => {
+  return knex('users')
+    .insert(testUser)
+    .then(() => {
+      return knex.batchInsert('users', fixtureFactory.generate('user', 10));
+    })
+};
