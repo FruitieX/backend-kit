@@ -6,7 +6,7 @@ This is a sample Node.js backend for the Pepperoni app kit.
 
 ## Install project dependencies
 ```
-yarn
+$ yarn
 ```
 
 ## Install PostgreSQL
@@ -19,7 +19,7 @@ $ psql --user postgres
   CREATE DATABASE pepperoni;
   <C-d>
 
-yarn db:migrate
+$ yarn db:migrate
 ```
 
 ## Insert seed data
@@ -27,10 +27,10 @@ yarn db:migrate
 # Run either of these
 
 # Production environment
-yarn db:seed
+$ yarn db:seed
 
 # Development environment, additionally inserts admin account with credentials: foo@bar.com:foobar
-yarn db:seed-dev
+$ yarn db:seed-dev
 ```
 
 ## Register admin user (production environments)
@@ -47,7 +47,7 @@ $ export SECRET=[secret-string]
 
 In Heroku, you can:
 ```
-heroku config:set SECRET=[secret-string]
+$ heroku config:set SECRET=[secret-string]
 ```
 
 Recommendation for generating `[secret-string]`:
@@ -59,13 +59,13 @@ $ node
 
 ## Run backend
 ```
-yarn start
+$ yarn start
 ```
 
 Backend is now listening on port 3888 (or `$PORT` if set)
 
 ## Run backend in development, watching for changes
 ```
-yarn watch
+$ yarn watch
 ```
 
