@@ -52,9 +52,7 @@ $ heroku config:set SECRET=[secret-string]
 
 Recommendation for generating `[secret-string]`:
 ```
-$ node
-> require('crypto').randomBytes(32).toString('hex')
-'790f9dd8653ba650cc7925a8d89e16eff533e8549dd65d071ddf6ea80ce1ab0a'
+$ node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
 ```
 
 ## Run backend
