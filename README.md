@@ -6,7 +6,7 @@ This is a sample Node.js backend for the Pepperoni app kit.
 
 ## Install project dependencies
 ```
-npm i
+yarn
 ```
 
 ## Install PostgreSQL
@@ -19,7 +19,7 @@ $ psql --user postgres
   CREATE DATABASE pepperoni;
   <C-d>
 
-npm run db:migrate
+yarn db:migrate
 ```
 
 ## Insert seed data
@@ -27,10 +27,10 @@ npm run db:migrate
 # Run either of these
 
 # Production environment
-npm run db:seed
+yarn db:seed
 
 # Development environment, additionally inserts admin account with credentials: foo@bar.com:foobar
-npm run db:seed-dev
+yarn db:seed-dev
 ```
 
 ## Register admin user (production environments)
@@ -59,7 +59,13 @@ $ node
 
 ## Run backend
 ```
-npm start
+yarn start
 ```
 
 Backend is now listening on port 3888 (or `$PORT` if set)
+
+## Run backend in development, watching for changes
+```
+yarn watch
+```
+
