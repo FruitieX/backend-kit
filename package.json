@@ -1,13 +1,12 @@
 {
-  "name": "PepperoniApiTemplate",
-  "author": "Futurice",
-  "description": "Node Api Starter Kit for Backend",
+  "name": "backend-hipster-kit",
+  "author": "FruitieX",
+  "description": "Get started with backend development",
   "license": "MIT",
-  "homepage": "http://getpepperoni.com",
-  "bugs": "https://github.com/futurice/pepperoni-api-kit/issues",
+  "bugs": "https://github.com/FruitieX/backend-hipster-kit/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/futurice/pepperoni-api-kit.git"
+    "url": "git+https://github.com/FruitieX/backend-hipster-kit.git"
   },
   "engines": {
     "node": "6.2.0"
@@ -15,7 +14,6 @@
   "keywords": [
     "Node",
     "Postgres",
-    "Auth0",
     "Knex",
     "Jest"
   ],
