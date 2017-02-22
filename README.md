@@ -17,7 +17,7 @@ Look up instructions for your specific OS/distribution.
 ```
 $ psql --user postgres
   CREATE DATABASE pepperoni;
-  <C-d>
+  \q
 
 $ yarn db:migrate
 ```
@@ -66,4 +66,3 @@ Backend is now listening on port 3888 (or `$PORT` if set)
 ```
 $ yarn watch
 ```
-
