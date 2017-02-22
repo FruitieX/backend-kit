@@ -1,7 +1,9 @@
+import dotenv from 'dotenv';
+
 const env = process.env;
 
 if (!env.NODE_ENV || env.NODE_ENV === 'development') {
-  require('dotenv').config({ silent: true });
+  dotenv.config({ silent: true });
 }
 
 const requiredEnvironmentVariables = [
@@ -12,7 +14,10 @@ const requiredEnvironmentVariables = [
 if (env.NODE_ENV && (env.NODE_ENV !== 'development' && env.NODE_ENV !== 'test')) {
   requiredEnvironmentVariables.forEach((key) => {
     if (!env[key]) {
+      /* eslint-disable no-console */
       console.log(`Warning: Environment variable ${key} not set.`);
+      /* eslint-enable no-console */
+
       throw new Error('Quitting.');
     }
   });

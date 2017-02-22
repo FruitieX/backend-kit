@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import knex from 'knex';
 import mockKnex from 'mock-knex';
 

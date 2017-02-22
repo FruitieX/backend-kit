@@ -1,4 +1,4 @@
-let config = require('./src/utils/config');
+const config = require('./src/utils/config');
 
 const COMMON_ENV = Object.assign({}, config.db, {
   // Use a single connection to execute migrations.

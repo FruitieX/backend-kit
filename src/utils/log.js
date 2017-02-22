@@ -18,3 +18,5 @@ export const goodOptions = {
     }, 'stdout'],
   },
 };
+
+export default goodOptions;

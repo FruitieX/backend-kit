@@ -8,3 +8,5 @@ export const resizeImage = image => new Promise((resolve, reject) => (
       .getBuffer(Jimp.MIME_PNG, (err, data) => (err ? reject(err) : resolve(data)))
   ))
 ));
+
+export default resizeImage;

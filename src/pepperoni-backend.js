@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-console */
+
 import Hoek from 'hoek';
 import compose from './server';
 
