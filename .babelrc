@@ -3,4 +3,7 @@
     "es2015-node",
     "stage-0",
   ],
+  "ignore": [
+    "**/__mocks__/*.js"
+  ]
 }
