@@ -2,7 +2,7 @@ import knex from '../utils/db';
 
 export const dbGetUsers = () => (
   knex('users')
-    .select('id', 'email', 'description')
+    .select('id', 'email')
 );
 
 export const dbGetUser = id => (
