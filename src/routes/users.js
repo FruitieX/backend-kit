@@ -1,5 +1,32 @@
-import { getAuthWithScope, doAuthWithScope } from '../utils/auth';
-import { getUsers, getUser, updateUser, delUser, authUser } from '../controllers/users';
+import { merge } from 'lodash';
+import Joi from 'joi';
+
+import { getAuthWithScope, doAuth } from '../utils/auth';
+import {
+  getUsers,
+  getUser,
+  updateUser,
+  delUser,
+  authUser,
+  registerUser,
+} from '../controllers/users';
+
+const validateUserId = {
+  validate: {
+    params: {
+      userId: Joi.number().integer().required(),
+    },
+  },
+};
+
+const validateRegistrationFields = {
+  validate: {
+    payload: {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+  },
+};
 
 const users = [
   // Get a list of all users
@@ -11,26 +38,32 @@ const users = [
   // Get info about a specific user
   { method: 'GET',
     path: '/users/{userId}',
-    config: getAuthWithScope('user'),
+    config: merge({}, validateUserId, getAuthWithScope('user')),
     handler: getUser },
 
   // Update user profile
   { method: 'POST',
     path: '/users/{userId}',
-    config: doAuthWithScope('user'),
+    config: merge({}, validateUserId, getAuthWithScope('user')),
     handler: updateUser },
 
   // Delete a user, admin only
   { method: 'DELETE',
     path: '/users/{userId}',
-    config: getAuthWithScope('admin'),
+    config: merge({}, validateUserId, getAuthWithScope('admin')),
     handler: delUser },
 
   // Authenticate as user
   { method: 'POST',
     path: '/users/authenticate',
-    config: doAuthWithScope('user'),
+    config: doAuth,
     handler: authUser },
+
+  // Register new user
+  { method: 'POST',
+    path: '/users',
+    config: validateRegistrationFields,
+    handler: registerUser },
 ];
 
 export default users;

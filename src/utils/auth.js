@@ -32,14 +32,13 @@ export const bindUserData = (request, reply) => {
 
 // Hapi route config which makes sure user has authenticated with `scope`
 export const getAuthWithScope = scope => ({
-  auth: { strategy: 'jwt', scope },
-  pre: [{ method: bindUserData, assign: scope }],
+  auth: { strategy: 'jwt', scope: ['admin', scope] },
+  pre: [{ method: bindUserData, assign: 'user' }],
 });
 
-// Verify credentials for user with `scope`. DB table name is assumed to == value of given `scope`
-// with an 's' appended (plural form).
-export const verifyCredentials = scope => ({ payload: { email, password } }, reply) => (
-  knex(`${scope}s`)
+// Verify credentials for user
+export const verifyCredentials = ({ payload: { email, password } }, reply) => (
+  knex('users')
     .first()
     .where({ email })
     .then(((user) => {
@@ -60,8 +59,8 @@ export const verifyCredentials = scope => ({ payload: { email, password } }, rep
     })
 );
 
-// Hapi route config which performs authentication with `scope`
-export const doAuthWithScope = scope => ({
+// Hapi route config which performs user authentication
+export const doAuth = ({
   validate: {
     payload: {
       email: Joi.string().required(),
@@ -72,14 +71,14 @@ export const doAuthWithScope = scope => ({
     },
   },
   pre: [
-    { method: verifyCredentials(scope), assign: scope },
+    { method: verifyCredentials, assign: 'user' },
   ],
 });
 
 // Create a new JWT for user with `email` and `scope`
 export const createToken = (id, email, scope) => ({
   token: jwt.sign({ id, email, scope }, config.auth.secret, {
-    algorithm: config.auth.options.algorithms[0]
+    algorithm: config.auth.options.algorithms[0],
   }),
 });
 

@@ -2,6 +2,7 @@ exports.up = knex => (
   knex.schema
     .createTableIfNotExists('users', (table) => {
       table.increments('id').primary();
+      table.enum('scope', ['admin', 'user']).notNullable();
       table.text('email').notNullable().unique();
       table.text('password').notNullable();
       table.text('description');

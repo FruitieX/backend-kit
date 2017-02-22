@@ -7,14 +7,19 @@ fixtureFactory.register('user', {
   email: 'internet.email',
   password: dummyPassword,
   description: 'lorem.sentences',
+  scope: 'user',
 });
 
-const testUser = Object.assign({}, fixtureFactory.generateOne('user'), { email: 'foo@bar.com' });
+// Generate one test admin user
+const testUser = Object.assign({}, fixtureFactory.generateOne('user'), {
+  email: 'foo@bar.com',
+  scope: 'admin',
+});
 
-exports.seed = knex => {
-  return knex('users')
+exports.seed = knex => (
+  knex('users')
     .insert(testUser)
-    .then(() => {
-      return knex.batchInsert('users', fixtureFactory.generate('user', 10));
-    })
-};
+    .then(() => (
+      knex.batchInsert('users', fixtureFactory.generate('user', 10))
+    ))
+);
