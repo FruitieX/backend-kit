@@ -36,7 +36,7 @@ $ yarn db:seed-dev
 ## Register admin user (production environments)
 ```
 # Get URL from e.g. Heroku dashboard
-$ DATABASE_URL=postgres://user:pass@hostname/dbname node register_admin.js
+$ DATABASE_URL=postgres://user:pass@hostname/dbname yarn register-admin
 ```
 
 ## Set secret used for generating JWT tokens (production environments)
