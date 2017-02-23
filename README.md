@@ -1,5 +1,7 @@
 # Pepperoni Backend
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/FruitieX/backend-hipster-kit.svg)](https://greenkeeper.io/)
+
 This is a sample Node.js backend for the Pepperoni app kit.
 
 # Setup guide
