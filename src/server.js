@@ -1,6 +1,7 @@
 import Glue from 'glue';
 import Routes from 'hapi-routes';
 import Hoek from 'hoek';
+import { join } from 'path';
 
 import config from './utils/config';
 import { validateJwt } from './utils/auth';
@@ -45,7 +46,7 @@ export default Glue.compose({
   return new Promise((resolve) => {
     server.register({
       register: Routes,
-      options: { dir: 'src/routes' },
+      options: { dir: join(__dirname, 'routes') },
     }, (err) => {
       Hoek.assert(!err, err);
       resolve(server);

@@ -52,7 +52,7 @@
     "good-squeeze": "^4.0.0",
     "hapi": "^16.1.0",
     "hapi-auth-jwt2": "^7.0.1",
-    "hapi-routes": "^2.2.3",
+    "hapi-routes-relative": "^2.2.5",
     "hoek": "^4.1.0",
     "jimp": "^0.2.27",
     "joi": "^10.2.2",

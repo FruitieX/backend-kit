@@ -2134,9 +2134,9 @@ hapi-for-you@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hapi-for-you/-/hapi-for-you-1.0.0.tgz#d362fbee8d7bda9c2c7801e207e5a5cd1a0b6a7b"
 
-hapi-routes:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/hapi-routes/-/hapi-routes-2.2.3.tgz#24a500c1c08165c7cecdea9b31b81f0a8b74c16d"
+hapi-routes-relative:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/hapi-routes-relative/-/hapi-routes-relative-2.2.5.tgz#e9aae7ca923b2180cc0e43200fdf6ff8c9482fa9"
   dependencies:
     async "2.x.x"
 
