@@ -19,7 +19,6 @@
   ],
   "scripts": {
     "start": "npm run build && node dist/pepperoni-backend.js",
-    "postinstall": "npm run build",
     "build": "mkdir -p dist && babel src --out-dir dist --source-maps",
     "watch": "NODE_ENV=development nodemon --exec babel-node src/pepperoni-backend.js",
     "register:admin": "babel-node register_admin.js",
