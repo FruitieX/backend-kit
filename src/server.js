@@ -10,6 +10,7 @@ import { goodOptions } from './utils/log';
 // Uncomment if you want UTC as timezone
 // process.env.TZ = 'UTC';
 
+// Glue is a hapi.js server wrapper
 export default Glue.compose({
   server: {
     // Only affects verbosity of logging to console

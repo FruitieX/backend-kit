@@ -18,9 +18,9 @@
     "Jest"
   ],
   "scripts": {
-    "start": "npm run build && node dist/pepperoni-backend.js",
+    "start": "npm run build && node dist/backend-kit.js",
     "build": "mkdir -p dist && babel src --out-dir dist --source-maps",
-    "watch": "NODE_ENV=development nodemon --exec babel-node src/pepperoni-backend.js",
+    "watch": "NODE_ENV=development nodemon --exec babel-node src/backend-kit.js",
     "register:admin": "babel-node register_admin.js",
     "lint": "eslint src/",
     "lint:fix": "eslint --fix src/",

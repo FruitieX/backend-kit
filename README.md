@@ -1,8 +1,8 @@
-# Pepperoni Backend
+# backend-hipster-kit
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/FruitieX/backend-hipster-kit.svg)](https://greenkeeper.io/)
 
-This is a sample Node.js backend for the Pepperoni app kit.
+This is a sample Node.js backend.
 
 # Setup guide
 
@@ -18,7 +18,7 @@ Look up instructions for your specific OS/distribution.
 ## Initialize DB
 ```
 $ psql --user postgres
-  CREATE DATABASE pepperoni;
+  CREATE DATABASE backendkit;
   \q
 
 $ yarn db:migrate
