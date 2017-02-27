@@ -26,10 +26,10 @@
     "lint:fix": "eslint --fix src/",
     "test": "jest",
     "test:watch": "jest --watch",
-    "db:init": "knex migrate:latest",
-    "db:seed": "knex seed:run",
-    "db:migrate": "knex migrate:latest",
-    "db:rollback": "knex migrate:rollback"
+    "db:init": "babel-node node_modules/.bin/knex migrate:latest",
+    "db:seed": "babel-node node_modules/.bin/knex seed:run",
+    "db:migrate": "babel-node node_modules/.bin/knex migrate:latest",
+    "db:rollback": "babel-node node_modules/.bin/knex migrate:rollback"
   },
   "version": "0.0.1",
   "main": "src/server.js",
