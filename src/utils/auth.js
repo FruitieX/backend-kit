@@ -36,24 +36,31 @@ export const getAuthWithScope = scope => ({
   pre: [{ method: bindUserData, assign: 'user' }],
 });
 
+export const comparePasswords = (passwordAttempt, user) => (
+  new Promise((resolve, reject) => (
+    bcrypt.compare(passwordAttempt, user.password, (err, isValid) => {
+      if (!err && isValid) {
+        resolve(user);
+      } else {
+        reject(`Incorrect password attempt`);
+      }
+    })
+  ))
+);
+
 // Verify credentials for user
 export const verifyCredentials = ({ payload: { email, password } }, reply) => (
   knex('users')
     .first()
     .where({ email })
-    .then(((user) => {
+    .then((user) => {
       if (!user) {
-        throw new Error(`User with email ${email} not found in database`);
+        Promise.reject(`User with email ${email} not found in database`);
       }
 
-      bcrypt.compare(password, user.password, (err, isValid) => {
-        if (isValid) {
-          reply(user);
-        } else {
-          throw new Error(`Incorrect password attempt by user with email ${email}`);
-        }
-      });
-    }))
+      return comparePasswords(password, user);
+    })
+    .then(reply)
     .catch(() => {
       reply(Boom.unauthorized('Incorrect email or password!'));
     })
