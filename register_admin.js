@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 import prompt from 'prompt';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import config from './src/utils/config';
 import knex from './src/utils/db';

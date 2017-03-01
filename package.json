@@ -41,6 +41,7 @@
     "babel-preset-es2015-node": "^6.1.1",
     "babel-preset-stage-0": "^6.22.0",
     "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.4.1",
     "boom": "^4.2.0",
     "dotenv": "^4.0.0",

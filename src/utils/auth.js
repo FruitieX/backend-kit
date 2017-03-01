@@ -1,7 +1,7 @@
 import Boom from 'boom';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 import config from './config';
 import knex from './db';
