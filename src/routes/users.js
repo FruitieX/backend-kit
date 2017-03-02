@@ -30,40 +30,52 @@ const validateRegistrationFields = {
 
 const users = [
   // Get a list of all users
-  { method: 'GET',
+  {
+    method: 'GET',
     path: '/users',
     config: getAuthWithScope('user'),
-    handler: getUsers },
+    handler: getUsers,
+  },
 
   // Get info about a specific user
-  { method: 'GET',
+  {
+    method: 'GET',
     path: '/users/{userId}',
     config: merge({}, validateUserId, getAuthWithScope('user')),
-    handler: getUser },
+    handler: getUser,
+  },
 
   // Update user profile
-  { method: 'POST',
+  {
+    method: 'POST',
     path: '/users/{userId}',
     config: merge({}, validateUserId, getAuthWithScope('user')),
-    handler: updateUser },
+    handler: updateUser,
+  },
 
   // Delete a user, admin only
-  { method: 'DELETE',
+  {
+    method: 'DELETE',
     path: '/users/{userId}',
     config: merge({}, validateUserId, getAuthWithScope('admin')),
-    handler: delUser },
+    handler: delUser,
+  },
 
   // Authenticate as user
-  { method: 'POST',
+  {
+    method: 'POST',
     path: '/users/authenticate',
     config: doAuth,
-    handler: authUser },
+    handler: authUser,
+  },
 
   // Register new user
-  { method: 'POST',
+  {
+    method: 'POST',
     path: '/users',
     config: validateRegistrationFields,
-    handler: registerUser },
+    handler: registerUser,
+  },
 ];
 
 export default users;
