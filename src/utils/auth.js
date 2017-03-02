@@ -42,7 +42,7 @@ export const comparePasswords = (passwordAttempt, user) => (
       if (!err && isValid) {
         resolve(user);
       } else {
-        reject(`Incorrect password attempt`);
+        reject('Incorrect password attempt');
       }
     })
   ))
