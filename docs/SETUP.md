@@ -31,18 +31,30 @@ $ yarn db:seed
 $ DATABASE_URL=postgres://user:pass@hostname/dbname yarn register:admin
 ```
 
-## Set secret used for generating JWT tokens (production environments)
+## Environment variables (production environments)
+### Environments
+#### Heroku
+
+Set environment variables using:
+
 ```
-# Backend will refuse to run if NODE_ENV=production and this is not set:
-$ export SECRET=[secret-string]
+$ heroku config.set ENV_VAR=[value]
 ```
 
-In Heroku, you can:
+#### Others
+
+We recommend creating a [.env](https://www.npmjs.com/package/dotenv) file in
+the root of the repository. Change directory to the repository root and simply:
+
 ```
-$ heroku config:set SECRET=[secret-string]
+$ cat ENV_VAR=[value] >> .env
 ```
 
-You may also use [dotenv](https://www.npmjs.com/package/dotenv) files if you wish.
+### JWT token generation secret
+Backend will refuse to run if NODE_ENV=production and this is not set:
+```
+SECRET=[secret-string]
+```
 
 Recommendation for generating `[secret-string]`:
 ```
