@@ -75,7 +75,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "jest": "^19.0.1",
-    "lab": "^12.1.0",
+    "lab": "^13.0.1",
     "lab-babel": "^1.1.1",
     "mock-knex": "^0.3.7",
     "nodemon": "^1.9.2"
