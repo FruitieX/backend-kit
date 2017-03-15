@@ -14,9 +14,17 @@ Look up instructions for your specific OS/distribution.
 ## Initialize DB
 ```
 $ psql --user postgres
-  CREATE DATABASE backendkit;
-  \q
+```
 
+NOTE: If you get errors when running the above command:
+[Troubleshooting PostgreSQL connection errors](/docs/POSTGRESQL.md)
+
+```
+postgres=# CREATE DATABASE backendkit;
+postgres=# \q
+```
+
+```
 $ yarn db:migrate
 ```
 
@@ -62,13 +70,14 @@ $ node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
 ```
 
 ## Run backend
+### Run in development, watching for changes
+```
+$ yarn watch
+```
+
+### Run in production
 ```
 $ yarn start
 ```
 
 Backend is now listening on port 3888 (or `$PORT` if set)
-
-## Run backend in development, watching for changes
-```
-$ yarn watch
-```
