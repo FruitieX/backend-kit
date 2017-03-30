@@ -22,3 +22,10 @@ Fixing `FATAL: Peer authentication failed for user "postgres"`:
   ```
   host    all             all             127.0.0.1/32            trust
   ```
+
+* After this, reload the config by restarting the PostgreSQL service (on
+  Debian/Ubuntu):
+
+  ```
+  sudo systemctl restart postgresql.service
+  ```
