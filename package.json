@@ -55,7 +55,7 @@
     "hapi-routes-relative": "^2.2.5",
     "hoek": "^4.1.0",
     "jimp": "^0.2.27",
-    "joi": "^10.2.2",
+    "joi": "^10.3.2",
     "jsonwebtoken": "^7.3.0",
     "knex": "^0.12.7",
     "lodash": "^4.13.1",
