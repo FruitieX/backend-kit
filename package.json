@@ -42,7 +42,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.4.1",
-    "boom": "^4.2.0",
+    "boom": "^5.0.0",
     "dotenv": "^4.0.0",
     "fixture-factory": "^1.5.1",
     "fs-sync": "^1.0.2",
