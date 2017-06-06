@@ -3,8 +3,8 @@
 import prompt from 'prompt';
 import bcrypt from 'bcryptjs';
 
-import config from './src/utils/config';
-import knex from './src/utils/db';
+import config from '../src/utils/config';
+import knex from '../src/utils/db';
 
 const saltRounds = config.auth.saltRounds;
 const schema = {

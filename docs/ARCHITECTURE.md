@@ -3,10 +3,15 @@
 ## Directory structure
 
 ```
+bin
+├── register_admin.js   # Helper script for registering admin users
+└── wipe_db.js          # Helper script for wiping the database
+
 db
 ├── migrations          # Database initial schema + migrations
 ├── seeds-dev           # Seed data (development environments)
-└── seeds-prod          # Seed data (production environments)
+├── seeds-prod          # Seed data (production environments)
+└── knexfile.js         # knex.js (database) configuration
 
 dist
 └── ...                 # Contains built app ready for distribution
@@ -25,9 +30,7 @@ src
 ├── backend-kit.js      # Entry point of app
 └── server.js           # Server config
 
-knexfile.js             # knex.js (database) configuration
 Procfile                # Heroku configuration
-register_admin.js       # Helper script for registering admin users
 ```
 
 ## Routes

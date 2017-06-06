@@ -1,4 +1,4 @@
-const config = require('./src/utils/config');
+import config from '../src/utils/config';
 
 const COMMON_ENV = {
   ...config.db,
@@ -10,7 +10,7 @@ const COMMON_ENV = {
   },
   migrations: {
     tableName: 'knex_migrations',
-    directory: 'db/migrations',
+    directory: 'migrations',
   },
 };
 
@@ -22,7 +22,7 @@ module.exports = {
     ...COMMON_ENV,
 
     seeds: {
-      directory: 'db/seeds-dev',
+      directory: 'seeds-dev',
     },
   },
 
@@ -31,7 +31,7 @@ module.exports = {
     ...COMMON_ENV,
 
     seeds: {
-      directory: 'db/seeds-prod',
+      directory: 'seeds-prod',
     },
   },
 };

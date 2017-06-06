@@ -18,18 +18,19 @@
     "Jest"
   ],
   "scripts": {
-    "start": "npm run build && node dist/backend-kit.js",
+    "start": "npm run build && node dist/backend_kit.js",
     "build": "mkdir -p dist && babel src --out-dir dist --source-maps",
-    "watch": "NODE_ENV=development nodemon --exec babel-node src/backend-kit.js",
-    "register:admin": "babel-node register_admin.js",
+    "watch": "NODE_ENV=development nodemon --exec babel-node src/backend_kit.js",
+    "register:admin": "babel-node bin/register_admin.js",
     "lint": "eslint src/",
     "lint:fix": "eslint --fix src/",
     "test": "jest",
     "test:watch": "jest --watch",
-    "db:init": "babel-node node_modules/.bin/knex migrate:latest",
-    "db:seed": "babel-node node_modules/.bin/knex seed:run",
-    "db:migrate": "babel-node node_modules/.bin/knex migrate:latest",
-    "db:rollback": "babel-node node_modules/.bin/knex migrate:rollback"
+    "db:migrate": "babel-node node_modules/.bin/knex --knexfile db/knexfile.js migrate:latest",
+    "db:rollback": "babel-node node_modules/.bin/knex --knexfile db/knexfile.js migrate:rollback",
+    "db:seed": "babel-node node_modules/.bin/knex --knexfile db/knexfile.js seed:run",
+    "db:wipe": "babel-node bin/wipe_db.js",
+    "db:init": "npm run db:wipe && npm run db:migrate && npm run db:seed"
   },
   "version": "0.0.1",
   "main": "src/server.js",
