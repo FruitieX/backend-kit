@@ -52,7 +52,11 @@ export const authUser = (request, reply) => (
 
 export const registerUser = (request, reply) => (
   hashPassword(request.payload.password)
-    .then(password => dbCreateUser({ ...request.payload, password, scope: 'user' })
+    .then(passwordHash => dbCreateUser({
+      ...request.payload,
+      password: passwordHash,
+      scope: 'user',
+    })
     .then(reply))
     .catch((err) => {
       if (err.constraint === 'users_email_unique') {

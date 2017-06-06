@@ -42,26 +42,31 @@ export const comparePasswords = (passwordAttempt, user) => (
       if (!err && isValid) {
         resolve(user);
       } else {
-        reject('Incorrect password attempt');
+        reject(`Incorrect password attempt by user with email '${user.email}'`);
       }
     })
   ))
 );
 
-// Verify credentials for user
-export const verifyCredentials = ({ payload: { email, password } }, reply) => (
+// Hapi 'pre' method which verifies supplied user credentials
+export const preVerifyCredentials = ({ payload: { email, password: passwordAttempt } }, reply) => (
   knex('users')
     .first()
     .where({ email })
+    .leftJoin('secrets', 'users.id', 'secrets.ownerId')
     .then((user) => {
       if (!user) {
-        Promise.reject(`User with email ${email} not found in database`);
+        return Promise.reject(`User with email '${email}' not found in database`);
+      }
+      if (!user.password) {
+        return Promise.reject(`User with email '${email}' lacks password: logins disabled`);
       }
 
-      return comparePasswords(password, user);
+      return comparePasswords(passwordAttempt, user);
     })
     .then(reply)
     .catch(() => {
+      // TODO: log err to server console
       reply(Boom.unauthorized('Incorrect email or password!'));
     })
 );
@@ -73,12 +78,12 @@ export const doAuth = ({
       email: Joi.string().required(),
       password: Joi.string().required(),
     },
-    failAction: (request, reply) => {
-      reply(Boom.unauthorized('Incorrect email or password!'));
-    },
+    failAction: (request, reply) => (
+      reply(Boom.unauthorized('Incorrect email or password!'))
+    ),
   },
   pre: [
-    { method: verifyCredentials, assign: 'user' },
+    { method: preVerifyCredentials, assign: 'user' },
   ],
 });
 
