@@ -27,6 +27,8 @@ export default Glue.compose({
   registrations: [{
     plugin: 'hapi-auth-jwt2',
   }, {
+    plugin: 'hapi-qs',
+  }, {
     plugin: {
       register: 'good',
       options: goodOptions,
