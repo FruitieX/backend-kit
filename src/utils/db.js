@@ -23,6 +23,10 @@ export default knex(config.db);
 export const likeFilter = (filters, anyField = false) => (origQuery) => {
   let q = origQuery;
 
+  if (!filters) {
+    return q;
+  }
+
   Object.keys(filters).forEach((key, index) => {
     if (!index) {
       // first field with .whereRaw()
