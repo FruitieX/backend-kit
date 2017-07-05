@@ -16,7 +16,7 @@ const COMMON_ENV = {
 
 // Feel free to create any number of other environments.
 // The ones below are a best attempt at sensible defaults.
-export default {
+module.exports = {
   // Developer's local machine
   development: {
     ...COMMON_ENV,
