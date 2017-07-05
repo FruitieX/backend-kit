@@ -45,7 +45,7 @@
     "bluebird": "^3.4.1",
     "boom": "^5.1.0",
     "dotenv": "^4.0.0",
-    "fixture-factory": "^1.5.1",
+    "faker": "^4.1.0",
     "fs-sync": "^1.0.2",
     "glue": "^4.1.0",
     "good": "^7.0.1",
@@ -65,6 +65,7 @@
     "node-uuid": "^1.4.7",
     "pg": "^6.1.2",
     "prompt": "^1.0.0",
+    "simple-fixtures": "^1.0.1",
     "white-out": "^2.0.0"
   },
   "devDependencies": {
