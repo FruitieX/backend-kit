@@ -47,7 +47,7 @@ const users = [
 
   // Update user profile
   {
-    method: 'POST',
+    method: 'PATCH',
     path: '/users/{userId}',
     config: merge({}, validateUserId, getAuthWithScope('user')),
     handler: updateUser,
