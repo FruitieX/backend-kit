@@ -26,7 +26,7 @@ exports.up = knex => (
      * You may want to store other user secrets in this table as well.
      */
     .createTableIfNotExists('secrets', (table) => {
-      table.integer('ownerId').references('id').inTable('users').primary();
+      table.integer('ownerId').references('id').inTable('users').onDelete('CASCADE').primary();
       table.text('password').notNullable();
     })
 );
