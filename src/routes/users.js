@@ -9,7 +9,7 @@ import {
   delUser,
   authUser,
   registerUser,
-} from '../controllers/users';
+} from '../handlers/users';
 
 const validateUserId = {
   validate: {

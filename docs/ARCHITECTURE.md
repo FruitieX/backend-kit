@@ -18,7 +18,7 @@ dist
 
 src
 ├── __mocks__           # Jest mock files
-├── controllers         # Controllers (more below)
+├── handlers            # Handlers (more below)
 ├── models              # Database models (more below)
 ├── routes              # Routes (more below)
 ├── utils
@@ -36,7 +36,7 @@ Procfile                # Heroku configuration
 ## Routes
 
 Route files specify what your REST API will look like to the outside world. Here you will connect
-the REST endpoints with matching controllers, perform basic input validation and perform basic
+the REST endpoints with matching handlers, perform basic input validation and perform basic
 checks that the user has sufficient rights to access the endpoint.
 
 ### Array of route configs
@@ -45,15 +45,15 @@ Each route file contains an array of routes that it wants to configure, for exam
 ```
 // src/routes/example.js
 
-// Import your controllers here (more about controllers below)
-import { exampleController, controllerWithId } from '../controllers/example';
+// Import your handlers here (more about handlers below)
+import { exampleHandler, handlerWithId } from '../handlers/example';
 
 const myRoutes = [
   // Example API endpoint route config
   {
     method: 'GET',
     path: '/example',
-    handler: exampleController,
+    handler: exampleHandler,
   },
 
   // Example with path params and user authentication check
@@ -61,7 +61,7 @@ const myRoutes = [
     method: 'GET',
     path: '/example/{myId}',
     config: getAuthWithScope('user'),
-    handler: controllerWithId,
+    handler: handlerWithId,
   },
   ...
 ];
@@ -104,7 +104,7 @@ const myRoutes = [
     method: 'GET',
     path: '/example',
     config: exampleValidationConfig,
-    handler: exampleController,
+    handler: exampleHandler,
   },
   ...
 ];
@@ -128,7 +128,7 @@ const myRoutes = [
     method: 'GET',
     path: '/example',
     config: getAuthWithScope('user'),
-    handler: exampleController,
+    handler: exampleHandler,
   },
   ...
 ];
@@ -153,7 +153,7 @@ const myRoutes = [
     method: 'GET',
     path: '/example',
     config: merge({}, exampleValidationConfig, getAuthWithScope('user')),
-    handler: exampleController,
+    handler: exampleHandler,
   },
   ...
 ];
@@ -166,9 +166,9 @@ NOTE 2: ES6 object spread `config: {...exampleValidationConfig, ...getAuthWithSc
 would also work in many cases, but as it won't recursively merge objects, you may end up with only
 parts of the input configs.
 
-## Controllers
+## Handlers
 
-Controllers decide what a REST API endpoint actually does, by receiving the parameters of the
+Handlers decide what a REST API endpoint actually does, by receiving the parameters of the
 request, doing some computations on these and returning a result.
 
 ### Received request parameters include:
@@ -189,36 +189,36 @@ request.headers:
 
 [(More info about the request object)](https://hapijs.com/api#request-object)
 
-### Controller implementation
+### Handler implementation
 
-A controller can be very simple, let's make one that just returns the text 'Hello, world!':
+A handler can be very simple, let's make one that just returns the text 'Hello, world!':
 
 ```
-// src/controllers/example.js
+// src/handlers/example.js
 
-export const exampleController = (request, reply) => reply('Hello, world!');
+export const exampleHandler = (request, reply) => reply('Hello, world!');
 ```
 
 Let's make another that makes use of the `/example/{myId}` endpoint and fetches an item from the
 database based on the supplied ID:
 
 ```
-// src/controllers/example.js
+// src/handlers/example.js
 
 // Import your models here (more about models below)
 import { dbGetItem } from '../models/example';
 
 ...
-export const controllerWithId = (request, reply) => dbGetItem(request.params.myId).then(reply);
+export const handlerWithId = (request, reply) => dbGetItem(request.params.myId).then(reply);
 ```
 
 Or do some more complex stuff:
 
 ```
-// src/controllers/example.js
+// src/handlers/example.js
 
 ...
-export const complexController = (request, reply) => {
+export const complexHandler = (request, reply) => {
   if (request.pre && request.pre.user) {
     // Authenticated
     console.log(request.pre.user);
@@ -238,7 +238,7 @@ export const complexController = (request, reply) => {
 
 ## Models
 
-Database models allow your controller to access and modify db contents. Let's start by implementing
+Database models allow your handler to access and modify db contents. Let's start by implementing
 the `dbGetItem` function from the example above.
 
 ```
