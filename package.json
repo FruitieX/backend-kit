@@ -1,12 +1,12 @@
 {
-  "name": "backend-hipster-kit",
+  "name": "backend-kit",
   "author": "FruitieX",
   "description": "Get started with backend development",
   "license": "MIT",
-  "bugs": "https://github.com/FruitieX/backend-hipster-kit/issues",
+  "bugs": "https://github.com/FruitieX/backend-kit/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FruitieX/backend-hipster-kit.git"
+    "url": "git+https://github.com/FruitieX/backend-kit.git"
   },
   "engines": {
     "node": "6.2.0"
@@ -43,7 +43,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.4.1",
-    "boom": "^4.2.0",
+    "boom": "^5.1.0",
     "dotenv": "^4.0.0",
     "fixture-factory": "^1.5.1",
     "fs-sync": "^1.0.2",
@@ -59,7 +59,7 @@
     "jimp": "^0.2.27",
     "joi": "^10.2.2",
     "jsonwebtoken": "^7.3.0",
-    "knex": "^0.12.7",
+    "knex": "^0.13.0",
     "lodash": "^4.13.1",
     "mkdirp": "^0.5.1",
     "node-uuid": "^1.4.7",
@@ -68,16 +68,16 @@
     "white-out": "^2.0.0"
   },
   "devDependencies": {
-    "babel-jest": "^19.0.0",
+    "babel-jest": "^20.0.3",
     "chokidar-cli": "^1.2.0",
     "code": "^4.0.0",
-    "eslint": "^3.15.0",
-    "eslint-config-airbnb": "^14.1.0",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb": "^15.0.2",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.0",
-    "jest": "^19.0.1",
-    "lab": "^13.0.1",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "lab": "^14.1.0",
     "lab-babel": "^1.1.1",
     "mock-knex": "^0.3.7",
     "nodemon": "^1.9.2"

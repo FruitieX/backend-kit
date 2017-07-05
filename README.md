@@ -1,6 +1,6 @@
-# backend-hipster-kit
+# backend-kit
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/FruitieX/backend-hipster-kit.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/FruitieX/backend-kit.svg)](https://greenkeeper.io/)
 
 ## Documentation
 
