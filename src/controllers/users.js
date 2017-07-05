@@ -47,7 +47,11 @@ export const updateUser = async (request, reply) => {
 };
 
 export const authUser = (request, reply) => (
-  reply(createToken(request.pre.user.id, request.pre.user.email, 'user'))
+  reply(createToken({
+    id: request.pre.user.id,
+    email: request.pre.user.email,
+    scope: 'user',
+  }))
 );
 
 export const registerUser = (request, reply) => (

@@ -88,8 +88,8 @@ export const doAuth = ({
 });
 
 // Create a new JWT for user with `email` and `scope`
-export const createToken = (id, email, scope) => ({
-  token: jwt.sign({ id, email, scope }, config.auth.secret, {
+export const createToken = fields => ({
+  token: jwt.sign(fields, config.auth.secret, {
     algorithm: config.auth.options.algorithms[0],
   }),
 });
