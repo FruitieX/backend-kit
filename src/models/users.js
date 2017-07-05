@@ -1,10 +1,10 @@
 import knex from '../utils/db';
 
-const userSummaryFields = ['id', 'email'];
+const userListFields = ['id', 'email'];
 
 export const dbGetUsers = () => (
   knex('users')
-    .select(userSummaryFields)
+    .select(userListFields)
 );
 
 export const dbGetUser = id => (
@@ -17,6 +17,7 @@ export const dbUpdateUser = (id, fields) => (
   knex('users')
     .update({ ...fields })
     .where({ id })
+    .returning('*')
 );
 
 export const dbDelUser = id => (
