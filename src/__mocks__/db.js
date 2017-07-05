@@ -9,4 +9,4 @@ const db = knex({
 
 mockKnex.mock(db);
 
-module.exports = db;
+export default db;

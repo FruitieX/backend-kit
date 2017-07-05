@@ -23,7 +23,7 @@ if (env.NODE_ENV && (env.NODE_ENV !== 'development' && env.NODE_ENV !== 'test'))
   });
 }
 
-module.exports = Object.freeze({
+export default {
   server: {
     host: env.HOST || '0.0.0.0',
     port: env.PORT || 3888,
@@ -47,4 +47,4 @@ module.exports = Object.freeze({
       expiresIn: '24h',
     },
   },
-});
+};
