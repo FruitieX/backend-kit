@@ -52,7 +52,7 @@ export const comparePasswords = (passwordAttempt, user) => (
 export const preVerifyCredentials = ({ payload: { email, password: passwordAttempt } }, reply) => (
   knex('users')
     .first()
-    .where({ email })
+    .where({ email: email.toLowerCase().trim() })
     .leftJoin('secrets', 'users.id', 'secrets.ownerId')
     .then((user) => {
       if (!user) {

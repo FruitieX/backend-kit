@@ -58,6 +58,7 @@ export const registerUser = (request, reply) => (
   hashPassword(request.payload.password)
     .then(passwordHash => dbCreateUser({
       ...request.payload,
+      email: request.payload.email.toLowerCase().trim(),
       password: passwordHash,
       scope: 'user',
     })
