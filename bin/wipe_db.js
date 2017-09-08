@@ -14,7 +14,7 @@ const schema = {
 };
 
 console.log('WARNING! This will wipe the database at:');
-console.log(config.db);
+console.log(config.db.development);
 console.log('Are you sure? (y/n)');
 prompt.start();
 

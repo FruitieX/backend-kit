@@ -23,12 +23,13 @@ if (env.NODE_ENV && (env.NODE_ENV !== 'development' && env.NODE_ENV !== 'test'))
   });
 }
 
-export default {
+const config = {
   server: {
     host: env.HOST || '0.0.0.0',
     port: env.PORT || 3888,
   },
   db: {
+    // Common config for all db environments
     debug: false, // Toggle db debugging
     client: 'pg',
     connection: env.DATABASE_URL || {
@@ -38,6 +39,14 @@ export default {
       database: 'backendkit',
       ssl: false,
     },
+    pool: {
+      min: 1,
+      max: 1,
+    },
+    migrations: {
+      tableName: 'knex_migrations',
+      directory: 'migrations',
+    },
   },
   auth: {
     secret: env.SECRET || 'really_secret_key',
@@ -45,6 +54,29 @@ export default {
     options: {
       algorithms: ['HS256'],
       expiresIn: '24h',
+    },
+  },
+};
+
+export default {
+  ...config,
+  db: {
+    // Developer's local machine
+    development: {
+      ...config.db,
+
+      seeds: {
+        directory: 'seeds-dev',
+      },
+    },
+
+  // Production environment
+    production: {
+      ...config.db,
+
+      seeds: {
+        directory: 'seeds-prod',
+      },
     },
   },
 };

@@ -6,7 +6,7 @@ import config from './config';
 // Use ssl by default
 // pg.defaults.ssl = true;
 
-export default knex(config.db);
+export default knex(config.db.development);
 
 /**
  * Builds SQL query with given filter object.
