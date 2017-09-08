@@ -28,8 +28,7 @@ prompt.get(schema, (err, result) => {
     process.exit(1);
   }
 
-  knex.raw('DROP SCHEMA public CASCADE; CREATE SCHEMA public;')
-  .then(() => {
+  knex.raw('DROP SCHEMA public CASCADE; CREATE SCHEMA public;').then(() => {
     console.log('Successfully wiped database.');
     process.exit(0);
   });

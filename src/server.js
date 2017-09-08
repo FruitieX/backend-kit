@@ -16,26 +16,31 @@ export default Glue.compose({
     // Only affects verbosity of logging to console
     debug: process.env.NODE_ENV === 'test' ? false : { request: ['error'] },
   },
-  connections: [{
-    labels: ['web'],
-    host: config.server.host,
-    port: config.server.port,
-    routes: {
-      cors: true,
+  connections: [
+    {
+      labels: ['web'],
+      host: config.server.host,
+      port: config.server.port,
+      routes: {
+        cors: true,
+      },
     },
-  }],
-  registrations: [{
-    plugin: 'hapi-auth-jwt2',
-  }, {
-    plugin: 'hapi-qs',
-  }, {
-    plugin: {
-      register: 'good',
-      options: goodOptions,
+  ],
+  registrations: [
+    {
+      plugin: 'hapi-auth-jwt2',
     },
-  }],
-})
-.then((server) => {
+    {
+      plugin: 'hapi-qs',
+    },
+    {
+      plugin: {
+        register: 'good',
+        options: goodOptions,
+      },
+    },
+  ],
+}).then(server => {
   server.auth.strategy('jwt', 'jwt', {
     key: config.auth.secret,
     validateFunc: validateJwt,
@@ -46,13 +51,16 @@ export default Glue.compose({
   // server.auth.default('jwt');
 
   // Register routes once auth strategy is set up
-  return new Promise((resolve) => {
-    server.register({
-      register: Routes,
-      options: { dir: join(__dirname, 'routes') },
-    }, (err) => {
-      Hoek.assert(!err, err);
-      resolve(server);
-    });
+  return new Promise(resolve => {
+    server.register(
+      {
+        register: Routes,
+        options: { dir: join(__dirname, 'routes') },
+      },
+      err => {
+        Hoek.assert(!err, err);
+        resolve(server);
+      },
+    );
   });
 });

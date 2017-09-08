@@ -7,7 +7,6 @@ const userFields = {
   scope: 'user',
 };
 
-exports.seed = knex => (
+exports.seed = knex =>
   // Generate several test users (no password = login disabled)
-  knex.batchInsert('users', simpleFixtures.generateFixtures(userFields, 10))
-);
+  knex.batchInsert('users', simpleFixtures.generateFixtures(userFields, 10));

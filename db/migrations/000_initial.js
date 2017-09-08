@@ -1,19 +1,21 @@
-exports.up = knex => (
+exports.up = knex =>
   knex.schema
     /**
      * Users table
      *
      * Contains info on all users in the system
      */
-    .createTableIfNotExists('users', (table) => {
+    .createTableIfNotExists('users', table => {
       table.increments('id').primary();
       table.timestamp('createdAt').defaultTo(knex.fn.now());
       table.enum('scope', ['admin', 'user']).notNullable();
-      table.text('email').notNullable().unique();
+      table
+        .text('email')
+        .notNullable()
+        .unique();
       table.text('description');
       table.binary('image');
     })
-
     /**
      * Define a separate table for storing user secrets (such as password hashes).
      *
@@ -25,14 +27,15 @@ exports.up = knex => (
      *
      * You may want to store other user secrets in this table as well.
      */
-    .createTableIfNotExists('secrets', (table) => {
-      table.integer('ownerId').references('id').inTable('users').onDelete('CASCADE').primary();
+    .createTableIfNotExists('secrets', table => {
+      table
+        .integer('ownerId')
+        .references('id')
+        .inTable('users')
+        .onDelete('CASCADE')
+        .primary();
       table.text('password').notNullable();
-    })
-);
+    });
 
-exports.down = knex => (
-  knex.schema
-    .dropTableIfExists('users')
-    .dropTableIfExists('secrets')
-);
+exports.down = knex =>
+  knex.schema.dropTableIfExists('users').dropTableIfExists('secrets');

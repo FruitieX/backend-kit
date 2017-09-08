@@ -14,7 +14,9 @@ import {
 const validateUserId = {
   validate: {
     params: {
-      userId: Joi.number().integer().required(),
+      userId: Joi.number()
+        .integer()
+        .required(),
     },
   },
 };
@@ -22,7 +24,9 @@ const validateUserId = {
 const validateRegistrationFields = {
   validate: {
     payload: {
-      email: Joi.string().email().required(),
+      email: Joi.string()
+        .email()
+        .required(),
       password: Joi.string().required(),
     },
   },

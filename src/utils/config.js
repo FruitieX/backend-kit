@@ -6,13 +6,13 @@ if (!env.NODE_ENV || env.NODE_ENV === 'development') {
   dotenv.config({ silent: true });
 }
 
-const requiredEnvironmentVariables = [
-  'DATABASE_URL',
-  'SECRET',
-];
+const requiredEnvironmentVariables = ['DATABASE_URL', 'SECRET'];
 
-if (env.NODE_ENV && (env.NODE_ENV !== 'development' && env.NODE_ENV !== 'test')) {
-  requiredEnvironmentVariables.forEach((key) => {
+if (
+  env.NODE_ENV &&
+  (env.NODE_ENV !== 'development' && env.NODE_ENV !== 'test')
+) {
+  requiredEnvironmentVariables.forEach(key => {
     if (!env[key]) {
       /* eslint-disable no-console */
       console.log(`Warning: Environment variable ${key} not set.`);
@@ -70,7 +70,7 @@ export default {
       },
     },
 
-  // Production environment
+    // Production environment
     production: {
       ...config.db,
 

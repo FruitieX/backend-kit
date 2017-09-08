@@ -38,14 +38,16 @@ prompt.get(schema, (err, result) => {
         console.log(hashErr);
         process.exit(1);
       } else {
-        knex('users').insert({
-          email: result.email,
-          password: hash,
-          scope: 'admin',
-        }).then(() => {
-          console.log('Successfully created new admin user.');
-          process.exit(0);
-        });
+        knex('users')
+          .insert({
+            email: result.email,
+            password: hash,
+            scope: 'admin',
+          })
+          .then(() => {
+            console.log('Successfully created new admin user.');
+            process.exit(0);
+          });
       }
     });
   });
