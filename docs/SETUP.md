@@ -25,12 +25,7 @@ postgres=# \q
 ```
 
 ```
-$ yarn db:migrate
-```
-
-## Insert seed data
-```
-$ yarn db:seed
+$ yarn db:init
 ```
 
 ## Register admin user (production environments)
