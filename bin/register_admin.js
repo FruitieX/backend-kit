@@ -33,21 +33,28 @@ prompt.get(schema, (err, result) => {
       process.exit(1);
     }
 
-    bcrypt.hash(result.password, salt, (hashErr, hash) => {
+    bcrypt.hash(result.password, salt, async (hashErr, hash) => {
       if (hashErr) {
         console.log(hashErr);
         process.exit(1);
       } else {
-        knex('users')
-          .insert({
-            email: result.email,
+        await knex.transaction(async trx => {
+          const user = await trx('users')
+            .insert({
+              email: result.email,
+              scope: 'admin',
+            })
+            .returning('*')
+            .then(results => results[0]); // return only first result
+
+          await trx('secrets').insert({
+            ownerId: user.id,
             password: hash,
-            scope: 'admin',
-          })
-          .then(() => {
-            console.log('Successfully created new admin user.');
-            process.exit(0);
           });
+        });
+
+        console.log('Successfully created new admin user.');
+        process.exit(0);
       }
     });
   });
