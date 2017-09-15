@@ -64,7 +64,7 @@ export const authUser = (request, reply) =>
     createToken({
       id: request.pre.user.id,
       email: request.pre.user.email,
-      scope: 'user',
+      scope: request.pre.user.scope,
     }),
   );
 
