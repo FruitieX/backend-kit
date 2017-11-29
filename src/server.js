@@ -1,5 +1,5 @@
 import Glue from 'glue';
-import Routes from 'hapi-routes-relative';
+import Routes from 'hapi-routes-recursive';
 import Hoek from 'hoek';
 import { join } from 'path';
 
